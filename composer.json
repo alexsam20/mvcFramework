@@ -1,0 +1,16 @@
+{
+    "name": "alex/mvc-framework",
+    "description": "framework",
+    "authors": [
+        {
+            "name": "Alexandr",
+            "email": "alsam3637@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {}
+}
