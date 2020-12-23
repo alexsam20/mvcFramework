@@ -22,7 +22,7 @@ class Application
         $this->router = new Router($this->request, $this->response);
     }
 
-    public function run()
+    public function run(): string
     {
         echo $this->router->resolve();
     }
