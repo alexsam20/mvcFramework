@@ -11,7 +11,7 @@ use app\core\Request;
  */
 class MainController extends Controller
 {
-    public function home()
+    public function home(): string
     {
         $params = [
             'name' => 'Alexandr'
