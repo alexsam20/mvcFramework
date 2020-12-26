@@ -64,7 +64,7 @@ class Router
         return str_replace('{{content}}', $viewContent, $layoutContent);
     }
 
-    protected function layoutContent(): string
+    protected function layoutContent()
     {
         $layout = Application::$app->controller->layout;
         ob_start();
