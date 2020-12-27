@@ -13,8 +13,8 @@ class Router
 
     /**
      * Router constructor.
-     * @param \app\core\Request $request
-     * @param \app\core\Response $response
+     * @param Request $request
+     * @param Response $response
      */
     public function __construct(Request $request, Response $response)
     {
@@ -48,6 +48,7 @@ class Router
             Application::$app->controller = new $callback[0]();
             $callback[0] = Application::$app->controller;
         }
+//        return $callback($this->request);
         return call_user_func($callback, $this->request);
     }
 
@@ -77,6 +78,7 @@ class Router
         foreach ($params as $key => $value) {
             $$key = $value;
         }
+        //dump_pre($params);
         ob_start();
         include_once Application::$ROOT_DIR . "/views/$view.php";
         return ob_get_clean();

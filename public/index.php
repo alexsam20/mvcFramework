@@ -6,6 +6,15 @@ use app\core\Application;
 use app\controllers\AuthController;
 use app\controllers\MainController;
 
+function dump_pre($var, $s = 1) {
+    echo '<pre>';
+    var_dump($var);
+    echo '</pre>';
+    if ($s === 1){
+        exit;
+    }
+}
+
 $app = new Application(dirname(__DIR__));
 
 $app->router->get('/', [MainController::class, 'home']);
