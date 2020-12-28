@@ -1,21 +1,29 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
 use app\core\Application;
 use app\controllers\AuthController;
 use app\controllers\MainController;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
+
+$config = [
+    'db' => [
+       'dsn'      => $_ENV['DB_DSN'],
+       'user'     => $_ENV['DB_USER'],
+       'password' => $_ENV['DB_PASSWORD'],
+    ]
+];
 
 function dump_pre($var, $s = 1) {
     echo '<pre>';
     var_dump($var);
     echo '</pre>';
-    if ($s === 1){
-        exit;
-    }
+    if ($s === 1){exit;}
 }
 
-$app = new Application(dirname(__DIR__));
+$app = new Application(dirname(__DIR__), $config);
 
 $app->router->get('/', [MainController::class, 'home']);
 $app->router->get('/contact', [MainController::class, 'contact']);

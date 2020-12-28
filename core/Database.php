@@ -8,9 +8,16 @@ class Database
     /**
      * Database constructor.
      */
-    public function __construct()
+    public function __construct(array $config)
     {
-        $this->pdo = new \PDO($dsn, $user, $password);
-        $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $dsn = $config['dsn'] ?? '';
+        $user = $config['user'] ?? '';
+        $password = $config['password'] ?? '';
+        try {
+            $this->pdo = new \PDO($dsn, $user, $password);
+            $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        } catch (\PDOException $e) {
+            die($e->getMessage());
+        }
     }
 }
