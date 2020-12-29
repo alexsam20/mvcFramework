@@ -4,8 +4,7 @@ class m0001_inicial
 {
     public function up()
     {
-        echo "Applying migration";
-        /*$db = \thecodeholic\phpmvc\Application::$app->db;
+        $db = \app\core\Application::$app->db;
         $SQL = "CREATE TABLE users (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 email VARCHAR(255) NOT NULL,
@@ -14,14 +13,13 @@ class m0001_inicial
                 status TINYINT NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )  ENGINE=INNODB;";
-        $db->pdo->exec($SQL);*/
+        $db->pdo->exec($SQL);
     }
 
     public function down()
     {
-        echo 'Down migration';
-        /*$db = \thecodeholic\phpmvc\Application::$app->db;
+        $db = \app\core\Application::$app->db;
         $SQL = "DROP TABLE users;";
-        $db->pdo->exec($SQL);*/
+        $db->pdo->exec($SQL);
     }
 }
