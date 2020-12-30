@@ -1,0 +1,32 @@
+echo '<pre>';
+var_dump($callback);
+echo '</pre>';
+exit;
+
+$errors = [];
+$firstname = $request->getBody()['firstname'];
+$lastname = $request->getBody()['lastname'];
+$email = $request->getBody()['email'];
+$password = $request->getBody()['password'];
+$confirmPassword = $request->getBody()['confirmPassword'];
+if (!$firstname) {
+     $errors['firstname'] = 'This field is required';
+}
+if (!$lastname) {
+     $errors['firstname'] = 'This field is required';
+}
+return $this->render('register', [
+     'errors' => $errors
+]);
+
+
+<div class="col">
+    <div class="mb-3">
+        <label class="form-label">First name</label>
+        <input type="text" name="firstname" value="<?php echo $model->firstname ?? '' ?>"
+               class="form-control<?php echo $model->hasError('firstname') ? ' is-invalid' : '' ?>">
+        <div class="invalid-feedback">
+            <?php echo $model->getFirstError('firstname') ?>
+        </div>
+    </div>
+</div>
