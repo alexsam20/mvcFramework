@@ -28,6 +28,7 @@
                     <a class="nav-link" aria-current="page" href="/contact">Contact</a>
                 </li>
             </ul>
+            <?php if (Application::isGuest()): ?>
             <ul class="navbar-nav me-right mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="login">Login</a>
@@ -36,6 +37,15 @@
                     <a class="nav-link" aria-current="page" href="/register">Registr</a>
                 </li>
             </ul>
+            <?php else: ?>
+            <ul class="navbar-nav me-right mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/logout">Welcome <?php echo Application::$app->user->getDisplayName(); ?>
+                        (Logout)
+                    </a>
+                </li>
+            </ul>
+            <?php endif; ?>
             <!--<form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
