@@ -12,10 +12,11 @@ class Database
      */
     public function __construct(array $config)
     {
-        try {
             $dsn = $config['dsn'] ?? '';
             $user = $config['user'] ?? '';
             $password = $config['password'] ?? '';
+
+        try {
             $this->pdo = new \PDO($dsn, $user, $password);
             $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch(\PDOException $e) {
@@ -75,6 +76,11 @@ class Database
             $str        
         ");
         $statement->execute();
+    }
+
+    public function prepare($sql)
+    {
+        return $this->pdo->prepare($sql);
     }
 
     protected function log($message)
