@@ -1,4 +1,5 @@
-vendor
 .idea
-zx
+vendor
+composer.lock
 .env
+zx
