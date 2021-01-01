@@ -10,9 +10,10 @@ use app\models\User;
 class Application
 {
     public static string $ROOT_DIR;
+    public string $layout = 'main';
     public string $userClass;
     public static Application $app;
-    public Controller $controller;
+    public ?Controller $controller = null;
     public Database $db;
     public Router $router;
     public Request $request;
@@ -47,7 +48,15 @@ class Application
 
     public function run(): void
     {
-        echo $this->router->resolve();
+        try {
+            echo $this->router->resolve();
+        } catch (\Exception $e) {
+            $this->response->setStatusCode($e->getCode());
+            echo $this->router->renderView('_error', [
+                'exception' => $e,
+            ]);
+        }
+
     }
 
     /**
