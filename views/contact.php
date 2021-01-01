@@ -1,3 +1,7 @@
+<?php
+/** @var  $this \app\core\View */
+$this->title = 'Contact';
+?>
 <h1>Contact us</h1>
 
 <form action="" method="post">
