@@ -1,6 +1,9 @@
 <?php
 
 namespace app\core;
+
+use app\core\db\Database;
+use app\core\db\DbModel;
 use app\models\User;
 
 /**
@@ -15,13 +18,18 @@ class Application
     public static Application $app;
     public ?Controller $controller = null;
     public Database $db;
-    public ?DbModel $user;
+    public ?UserModel $user;
     public Router $router;
     public Request $request;
     public Response $response;
     public Session $session;
     public View $view;
 
+    /**
+     * Application constructor.
+     * @param $rootPath
+     * @param array $config
+     */
     public function __construct($rootPath, array $config)
     {
         self::$ROOT_DIR = $rootPath;
@@ -43,7 +51,7 @@ class Application
         }
     }
 
-    public static function isGuest()
+    public static function isGuest(): bool
     {
         return !self::$app->user;
     }
@@ -77,7 +85,7 @@ class Application
         $this->controller = $controller;
     }
 
-    public function login(DbModel $user)
+    public function login(UserModel $user): bool
     {
         $this->user = $user;
         $primaryKey = $user->primaryKey();
@@ -86,7 +94,7 @@ class Application
         return true;
     }
 
-    public function logout()
+    public function logout(): void
     {
         $this->user = null;
         $this->session->remove('user');

@@ -21,7 +21,7 @@ class Session
         $_SESSION[self::FLASH_KEY] = $flashMessages;
     }
 
-    public function setFlash($key, $message)
+    public function setFlash($key, $message): void
     {
         $_SESSION[self::FLASH_KEY][$key] = [
             'remove' => false,
@@ -29,6 +29,10 @@ class Session
         ];
     }
 
+    /**
+     * @param $key
+     * @return false|string
+     */
     public function getFlash($key)
     {
         return $_SESSION[self::FLASH_KEY][$key]['value'] ?? false;
@@ -39,12 +43,16 @@ class Session
         $_SESSION[$key] = $value;
     }
 
+    /**
+     * @param $key
+     * @return false|string
+     */
     public function get($key)
     {
         return $_SESSION[$key] ?? false;
     }
 
-    public function remove($key)
+    public function remove($key): void
     {
         unset($_SESSION[$key]);
     }

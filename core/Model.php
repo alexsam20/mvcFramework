@@ -33,7 +33,7 @@ abstract class Model
         return [];
     }
 
-    public function getLabel($attribute)
+    public function getLabel($attribute): string
     {
         return $this->labels()[$attribute] ?? $attribute;
     }
@@ -106,11 +106,19 @@ abstract class Model
         ];
     }
 
+    /**
+     * @param $attribute
+     * @return bool|array
+     */
     public function hasError($attribute)
     {
         return $this->errors[$attribute] ?? false;
     }
 
+    /**
+     * @param $attribute
+     * @return bool|array
+     */
     public function getFirstError($attribute)
     {
         return $this->errors[$attribute][0] ?? false;

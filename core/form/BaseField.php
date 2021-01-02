@@ -4,6 +4,10 @@ namespace app\core\form;
 
 use app\core\Model;
 
+/**
+ * Class BaseField
+ * @package app\core\form
+ */
 abstract class BaseField
 {
     public Model $model;

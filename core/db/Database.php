@@ -1,7 +1,13 @@
 <?php
 
-namespace app\core;
+namespace app\core\db;
 
+use app\core\Application;
+
+/**
+ * Class Database
+ * @package app\core\db
+ */
 class Database
 {
     public \PDO $pdo;
@@ -24,7 +30,7 @@ class Database
         }
     }
 
-    public function applyMigrations()
+    public function applyMigrations(): void
     {
         $this->createMigrationsTable();
         $appliedMigrations = $this->getAppliedMigrations();
@@ -52,7 +58,7 @@ class Database
         }
     }
 
-    public function createMigrationsTable()
+    public function createMigrationsTable(): void
     {
         $this->pdo->exec("CREATE TABLE IF NOT EXISTS migrations (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -61,7 +67,7 @@ class Database
         )  ENGINE=INNODB;");
     }
 
-    public function getAppliedMigrations()
+    public function getAppliedMigrations(): array
     {
         $statement = $this->pdo->prepare("SELECT migration FROM migrations;");
         $statement->execute();
@@ -69,7 +75,7 @@ class Database
         return $statement->fetchAll(\PDO::FETCH_COLUMN);
     }
 
-    public function saveMigrations(array $migrations)
+    public function saveMigrations(array $migrations): void
     {
         $str = implode(',', array_map(fn($m) => "('$m')", $migrations));
         $statement = $this->pdo->prepare("INSERT INTO migrations (migration) VALUE
@@ -78,12 +84,16 @@ class Database
         $statement->execute();
     }
 
+    /**
+     * @param $sql
+     * @return bool|\PDOStatement
+     */
     public function prepare($sql)
     {
         return $this->pdo->prepare($sql);
     }
 
-    protected function log($message)
+    protected function log($message): void
     {
         echo '[' . date('Y-m-d H:i:s') . '] - ' . $message . PHP_EOL;
     }

@@ -1,6 +1,9 @@
 <?php
 
-namespace app\core;
+namespace app\core\db;
+
+use app\core\Application;
+use app\core\Model;
 
 abstract class DbModel extends Model
 {
@@ -24,7 +27,7 @@ abstract class DbModel extends Model
         return true;
     }
 
-    public function findOne($where)
+    public function findOne($where): object
     {
         $tableName = static::tableName();
         $attributes = array_keys($where);
@@ -36,7 +39,10 @@ abstract class DbModel extends Model
         $statement->execute();
         return $statement->fetchObject(static::class);
     }
-
+    /**
+     * @param $sql
+     * @return bool|\PDOStatement
+     */
     public static function prepare($sql)
     {
         return Application::$app->db->pdo->prepare($sql);

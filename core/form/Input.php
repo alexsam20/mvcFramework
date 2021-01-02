@@ -4,6 +4,10 @@ namespace app\core\form;
 
 use app\core\Model;
 
+/**
+ * Class Input
+ * @package app\core\form
+ */
 class Input extends BaseField
 {
     public const TYPE_TEXT = 'text';

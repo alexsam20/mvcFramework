@@ -4,6 +4,10 @@ namespace app\core\form;
 
 use app\core\Model;
 
+/**
+ * Class Form
+ * @package app\core\form
+ */
 class Form
 {
     public static function begin($action, $method): self

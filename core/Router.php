@@ -34,14 +34,13 @@ class Router
         $this->routes['post'][$path] = $callback;
     }
 
-    public function resolve()
+    public function resolve(): string
     {
         $path = $this->request->getPath();
         $method = $this->request->method();
         $callback = $this->routes[$method][$path] ?? false;
         if ($callback === false) {
             throw new NotFoundException();
-            //return $this->renderView('404');
         }
         if (is_string($callback)) {
             return Application::$app->view->renderView($callback);

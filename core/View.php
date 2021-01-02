@@ -19,6 +19,9 @@ class View
         return str_replace('{{content}}', $viewContent, $layoutContent);
     }
 
+    /**
+     * @return false|string
+     */
     protected function layoutContent()
     {
         $layout = Application::$app->layout;

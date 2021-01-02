@@ -2,6 +2,10 @@
 
 namespace app\core\form;
 
+/**
+ * Class TextareaField
+ * @package app\core\form
+ */
 class TextareaField extends BaseField
 {
 
