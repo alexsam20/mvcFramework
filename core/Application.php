@@ -3,8 +3,6 @@
 namespace app\core;
 
 use app\core\db\Database;
-use app\core\db\DbModel;
-use app\models\User;
 
 /**
  * Class Application
