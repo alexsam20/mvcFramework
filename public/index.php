@@ -17,7 +17,7 @@ $config = [
     ]
 ];
 
-function dump_pre($var, $s = 1) {
+function dump_pre($var, $s = 0) {
     echo '<pre>';
     var_dump($var);
     echo '</pre>';
