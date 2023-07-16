@@ -17,7 +17,7 @@ class MainController extends Controller
     public function home(): string
     {
         $params = [
-            'name' => 'Alexandr'
+            'name' => 'Jhonny'
         ];
         return $this->render('home', $params);
     }

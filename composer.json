@@ -3,7 +3,7 @@
     "description": "framework",
     "authors": [
         {
-            "name": "Alexandr",
+            "name": "Alexandr SaM",
             "email": "alsam3637@gmail.com"
         }
     ],
@@ -13,6 +13,7 @@
         }
     },
     "require": {
-        "vlucas/phpdotenv": "^5.2"
+        "vlucas/phpdotenv": "^5.2",
+        "ext-pdo": "*"
     }
 }
