@@ -16,8 +16,10 @@ class MainController extends Controller
 {
     public function home(): string
     {
+        $date = date('d m Y H:m:i  [z');
         $params = [
-            'name' => 'Jhonny'
+            'name' => 'User',
+            'date' => $date,
         ];
         return $this->render('home', $params);
     }
