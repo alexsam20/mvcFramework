@@ -25,7 +25,8 @@ php migrations.php
 ### Step 6
 Run in console:
 ```shell
-php -S localhost:8000 public/index.php
+cd public/
+php -S localhost:8000
 ```
 Run in browser:
 ```shell
