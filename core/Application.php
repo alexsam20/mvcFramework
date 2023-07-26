@@ -12,7 +12,7 @@ class Application
 {
     public static string $ROOT_DIR;
     public string $layout = 'main';
-    public string $userClass;
+    public string $userClass = '';
     public static Application $app;
     public ?Controller $controller = null;
     public Database $db;
@@ -41,8 +41,8 @@ class Application
         $this->view = new View();
 
         $primaryValue = $this->session->get('user');
-        $user = new $this->userClass;
         if ($primaryValue) {
+            $user = new $this->userClass;
             $primaryKey = $user->primaryKey();
             $this->user = $user->findOne([$primaryKey => $primaryValue]);
         } else {

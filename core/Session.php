@@ -2,10 +2,6 @@
 
 namespace app\core;
 
-/**
- * Class Session
- * @package app\core
- */
 class Session
 {
     protected const FLASH_KEY = 'flash_message';
@@ -29,11 +25,7 @@ class Session
         ];
     }
 
-    /**
-     * @param $key
-     * @return false|string
-     */
-    public function getFlash($key)
+    public function getFlash($key): bool|string
     {
         return $_SESSION[self::FLASH_KEY][$key]['value'] ?? false;
     }
@@ -43,11 +35,7 @@ class Session
         $_SESSION[$key] = $value;
     }
 
-    /**
-     * @param $key
-     * @return false|string
-     */
-    public function get($key)
+    public function get($key): mixed
     {
         return $_SESSION[$key] ?? false;
     }

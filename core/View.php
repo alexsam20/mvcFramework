@@ -9,8 +9,7 @@ class View
     public function renderView($view, $params = []): string
     {
         $viewContent = $this->renderOnlyView($view, $params);
-        $layoutContent = $this->layoutContent();
-        return str_replace('{{content}}', $viewContent, $layoutContent);
+        return $this->renderContent($viewContent);
     }
 
     public function renderContent($viewContent): string
@@ -19,10 +18,7 @@ class View
         return str_replace('{{content}}', $viewContent, $layoutContent);
     }
 
-    /**
-     * @return false|string
-     */
-    protected function layoutContent()
+    protected function layoutContent(): false|string
     {
         $layout = Application::$app->layout;
         if (Application::$app->controller) {

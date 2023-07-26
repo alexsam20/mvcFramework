@@ -6,7 +6,7 @@ class m0003_user_contact
     {
         $db = \app\core\Application::$app->db;
         $SQL = "CREATE TABLE `user_contact` (
-                'id' INT(10) AUTO_INCREMENT PRIMARY KEY,
+                `id` INT(10) AUTO_INCREMENT PRIMARY KEY,
                 `subject` VARCHAR(255) NOT NULL,
                 `email` VARCHAR(255) NOT NULL,
                 `body` TEXT NOT NULL,

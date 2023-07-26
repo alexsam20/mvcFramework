@@ -8,18 +8,12 @@ use app\core\Request;
 use app\core\Response;
 use app\models\ContactForm;
 
-/**
- * Class MainController
- * @package app\controllers
- */
 class MainController extends Controller
 {
     public function home(): string
     {
-        $date = date('d m Y H:m:i  [z');
         $params = [
             'name' => 'User',
-            'date' => $date,
         ];
         return $this->render('home', $params);
     }
