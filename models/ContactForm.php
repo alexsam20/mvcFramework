@@ -17,7 +17,7 @@ class ContactForm extends Model
         return [
             'subject' => [self::RULE_REQUIRED],
             'email' => [self::RULE_REQUIRED, self::RULE_EMAIL],
-            'body' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 25]],
+            'body' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 10]],
         ];
     }
     public function labels(): array
